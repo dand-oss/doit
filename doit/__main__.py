@@ -1,11 +1,14 @@
 # lazy way to ignore coverage in this file
-if True: # pragma: no cover
-    def main():
-        import sys
+if True:  # pragma: no cover
+    import sys
+
+    def main(argv=None):
+        if not argv:
+            argv = sys.argv[1:0]
 
         from doit.doit_cmd import DoitMain
 
-        sys.exit(DoitMain().run(sys.argv[1:]))
+        return DoitMain().run(argv)
 
     if __name__ == '__main__':
-        main()
+        sys.exit(main())
